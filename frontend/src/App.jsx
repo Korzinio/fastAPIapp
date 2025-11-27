@@ -14,13 +14,14 @@ function App() {
   const fetchMessages = async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:8000/api/messages')
+      const response = await fetch('/api/messages')
       if (!response.ok) throw new Error('Помилка завантаження повідомлень')
       const data = await response.json()
       setMessages(data)
       setError(null)
     } catch (err) {
-      setError(err.message)
+      setError('Не вдалося підключитися до сервера. Переконайтеся, що backend запущений на http://localhost:8000')
+      console.error('Помилка:', err)
     } finally {
       setLoading(false)
     }
@@ -34,7 +35,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/messages', {
+      const response = await fetch('/api/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +50,8 @@ function App() {
       setNewMessage({ text: '', author: '' })
       setError(null)
     } catch (err) {
-      setError(err.message)
+      setError('Не вдалося відправити повідомлення. Переконайтеся, що backend запущений.')
+      console.error('Помилка:', err)
     }
   }
 

@@ -59,9 +59,15 @@ pip install -r requirements.txt
 ```
 
 5. Запустіть сервер:
+
+**Варіант 1 (стандартний):**
 ```bash
 uvicorn main:app --reload
 ```
+
+**Варіант 2 (через скрипт):**
+- Windows: `start.bat`
+- Linux/Mac: `bash start.sh` або `./start.sh`
 
 Backend буде доступний на `http://localhost:8000`
 API документація: `http://localhost:8000/docs`
@@ -84,6 +90,8 @@ npm run dev
 ```
 
 Frontend буде доступний на `http://localhost:3000`
+
+**Примітка:** Frontend автоматично використовує proxy для звернень до API, тому всі запити до `/api/*` будуть перенаправлені на `http://localhost:8000`.
 
 ## Функціонал
 
@@ -151,5 +159,7 @@ git push
 - Backend використовує in-memory сховище даних (повідомлення зберігаються в пам'яті)
 - Для production використання додайте базу даних (PostgreSQL, MongoDB тощо)
 - CORS налаштований для локальної розробки
-- Файл `.gitignore` налаштований для виключення `venv/`, `node_modules/` та інших непотрібних файлів
+- Файл `.gitignore` налаштований для виключення `venv/`, `node_modules/`, `__pycache__/` та інших непотрібних файлів
+- Frontend використовує Vite proxy для автоматичного перенаправлення API запитів
+- Додано скрипти запуску для зручності (`start.bat` для Windows, `start.sh` для Linux/Mac)
 
