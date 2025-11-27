@@ -162,4 +162,3 @@ git push
 - Файл `.gitignore` налаштований для виключення `venv/`, `node_modules/`, `__pycache__/` та інших непотрібних файлів
 - Frontend використовує Vite proxy для автоматичного перенаправлення API запитів
 - Додано скрипти запуску для зручності (`start.bat` для Windows, `start.sh` для Linux/Mac)
-
